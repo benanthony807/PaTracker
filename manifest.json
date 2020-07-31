@@ -1,0 +1,29 @@
+{
+  "name": "patracker",
+  "version": "1.0",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["https://www.patagonia.ca/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "/images/icon.png",
+    "128": "/images/pat19.png"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "patracker",
+    "default_icon:": "/images/icon.png"
+  },
+  "permissions": ["storage", 
+                  "alarms",
+                  "https://www.patagonia.ca/*",
+                  "notifications",
+                  "tabs"]
+}

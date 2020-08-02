@@ -5,6 +5,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   let colour = span.textContent.trim();
   let url = window.location.toString();
   let name = document.querySelector("h1").textContent.trim();
+  let img = document.querySelector("div.swiper-slide-active img").getAttribute("src");
   chrome.storage.local.get("key", function(items) {
     // all of the items currently be tracked
     let tracked = items.key;
@@ -12,9 +13,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (tracked === null || tracked === undefined) 
       tracked = [];
     // prospective item to track/untrack
-    let curr = {url:url, price:price, colour:colour, name:name};
+    let curr = {url:url, price:price, colour:colour, name:name, img:img};
     handleRequest(request, curr, tracked);
-    console.log(tracked);
   });
 });
 

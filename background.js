@@ -57,7 +57,7 @@ function notifyUser() {
     chrome.notifications.create(change.curr.url,  {
                                                    type: "basic", 
                                                    title: `Price drop on ${change.curr.colour} ${change.curr.name} from ${change.curr.price} to ${change.newPrice}`, 
-                                                   iconUrl: "images/pat19.png",
+                                                   iconUrl: change.curr.img,
                                                    message: "Click to see!"
                                                    });
   }
@@ -86,7 +86,6 @@ function getNewPrice(i, tracked) {
         // grab information from correct colour
         let span = DOM.querySelector(`div[data-caption='${item.colour}']`);
         let newPrice = span.querySelector("span.sales").textContent.trim().substring(3); // prices are in the form C$ 123, just want number
-        console.log(newPrice);
         resolve(newPrice);
       // if we can't find what we're looking for just return a large number so we can still resolve and promises.all doesn't reject
       } catch (e) {

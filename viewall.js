@@ -1,4 +1,4 @@
-chrome.storage.sync.get("key", function(items) {
+chrome.storage.local.get("key", function(items) {
   // all of the items currently be tracked
   let tracked = items.key;
   const table = document.getElementById("trackedItems");
@@ -16,5 +16,3 @@ chrome.storage.sync.get("key", function(items) {
     url.href = item.url;    
   }
 });
-
-//todo: css for viewall and popup html pages
